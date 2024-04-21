@@ -91,7 +91,7 @@ public class SignupPage extends javax.swing.JFrame {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library_ms","root","");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=CONVERT_TO_NULL","root","12345");
             
             PreparedStatement pst = con.prepareStatement("SELECT * FROM users where name = ?");
             pst.setString(1, name);
@@ -104,6 +104,7 @@ public class SignupPage extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return isExits;
     }
     
     /**
